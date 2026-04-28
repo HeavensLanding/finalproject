@@ -13,15 +13,12 @@ import com.promineotech.finalproject.repository.GenreRepository;
 @Service
 public class BookService {
 
-    // 🔽 existing repository
     @Autowired
     private BookRepository bookRepository;
 
-    // 🔽 ADD THIS RIGHT UNDER bookRepository
     @Autowired
     private GenreRepository genreRepository;
 
-    // 🔽 existing methods
     public Book createBook(Book book) {
         return bookRepository.save(book);
     }
@@ -34,7 +31,6 @@ public class BookService {
         return bookRepository.findByAuthorAuthorId(authorId);
     }
 
-    // 🔽 ADD THIS METHOD AT THE BOTTOM
     public Book addGenreToBook(Long bookId, Long genreId) {
         Book book = bookRepository.findById(bookId).orElseThrow();
         Genre genre = genreRepository.findById(genreId).orElseThrow();
