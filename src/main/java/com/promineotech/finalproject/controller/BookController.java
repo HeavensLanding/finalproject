@@ -15,25 +15,25 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    // CREATE a book
+
     @PostMapping
     public Book createBook(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
-    // GET all books
+
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-    // GET books by author
+
     @GetMapping("/author/{authorId}")
     public List<Book> getBooksByAuthor(@PathVariable Long authorId) {
         return bookService.getBooksByAuthor(authorId);
     }
 
-    // ADD genre to book (Many-to-Many)
+
     @PutMapping("/{bookId}/genres/{genreId}")
     public Book addGenreToBook(@PathVariable Long bookId, @PathVariable Long genreId) {
         return bookService.addGenreToBook(bookId, genreId);
